@@ -1,0 +1,125 @@
+<!-- ======= Header ======= -->
+<div class="header-top clearfix">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="row">
+            <div class="col-md-5 ">
+                <p><span>{{'Call us' | translate}} </span><a href="tel:+66945149294" style="color: #00e6ac;">+66 945149294</a></p>
+            </div>
+            <!--opening hours-->
+            <div class="col-md-7 ">
+                <div class="text-right">
+                    <!-- <a href="home/login" class="text-forgot"> ลงชื่อเข้าใช้ </a> -->
+                    <!-- <a href="home/forgetpassword"><b class="text-forgot">ลืมรหัสผ่าน</b></a> -->
+                    <!-- <a href="pages/profile" title="Profile">
+                        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-circle avatar-user" alt="avatar" />
+                        <span style="color: white;">&nbsp; testname lastname &nbsp;</span></a> -->
+                        <div *ngIf="userData==''">
+                            <a href="home/register" class="text-signup mx-2"><b>{{'Sign Up' | translate}}</b></a>
+                            <a href="home/login" class="text-forgot"><b>{{'Sign In' | translate}}</b></a>
+                        </div>
+
+                        <div role="group" *ngIf="userData !=''">
+                            <a href="javascript:(0)" id="btnGroupDrop1" type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img [src]="imageSrc" class="img-circle avatar-user" alt="avatar" />
+                                <span style="color: white;">&nbsp;&nbsp;{{userData.data.fname}} {{userData.data.lname}} &nbsp;&nbsp;<i class="fa fa-caret-down"></i></span>
+                            </a>
+                            <div class="dropdown-menu text-left" aria-labelledby="btnGroupDrop1">
+                              <a class="dropdown-item " href="pages/profile" style="padding:.25rem 1.5rem;"><b>{{'Profile' | translate}}</b></a>
+                              <div class="hr-menu"></div>
+                              <a class="dropdown-item" href="/products/form" style="padding:.25rem 1.5rem;"><b>{{'Post a Product' | translate}}</b></a>
+                              <div class="hr-menu"></div>
+                              <a class="dropdown-item" href="javascript:(0)" (click)="signOut()" style="padding:.25rem 1.5rem;"><b>{{'Sign Out' | translate}}</b></a>
+                            </div>
+                        </div>
+                    <!-- <a href="javascript:(0)" (click)="onlogOut()" title="Logout"><b class="text-forgot">{{'Logout' | translate}}</b></a> -->
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Header -->
+
+
+<header id="header">
+    <div class="container">
+
+        <!-- Website Logo -->
+        <div class="logo clearfix">
+            <a href="/home">
+                <img src="assets/images/WMTA_logo.png" alt="WMTA">
+            </a>
+        </div>
+
+        <!-- Main Navigation current-menu-item-->
+        <nav class="main-menu">
+            <ul class="header-nav clearfix" id="menu-main-menu">
+                <li class="page_item {{activeMenu('home')}}">
+                    <a href="/home" class="">{{'Home' | translate}}</a>
+                </li>
+                <li class="page_item {{activeMenu('concierge-service')}}">
+                    <a href="/concierge-service/personal-assistant" class="">{{'All Concierge Services' | translate}}</a>
+                </li>
+                <li class="page_item {{activeMenu('Our Services')}}">
+                    <a class="">{{'Our Services' | translate}}</a>
+                    <ul>
+                        <li><a href="/products">{{'Product & Treatment Course' | translate }}</a></li>
+                        <li><a href="/medical-treatment/">{{'Medical Treatment' | translate }}</a></li>
+                        <li><a href="/rehabilitation-center">{{'Rehabilitation Center' | translate}}</a></li>
+                        <li><a href="/wellness-retreat">{{'Wellness Retreat' | translate}}</a></li>
+                        <li><a href="https://www.wmtamedicaltourism.com/copy-of-we-care-elder-life" target="blank">{{'Elderly Care' | translate }}</a></li>
+                        <li><a href="/doctor">{{'Our Doctors' | translate}}</a></li>
+                        <!-- <li><a href="">{{'Tourism Services' | translate}}</a></li>
+                        <li><a href="">{{'Travel & Health Insurance Services' | translate}}</a></li>
+                        <li><a href="">{{'Transportation Services' | translate}}</a></li>
+                        <li><a href="">{{'Accommodation Services' | translate}}</a></li> -->
+                    </ul>
+                </li>
+
+                <!-- <li>
+                    <a href="appointment.html">Appointment</a>
+                </li> -->
+
+                <li class="page_item {{activeMenu('media-csr')}}">
+                    <a  href="/pages/media-csr">{{'Media & CSR' | translate}}</a>
+                </li>
+
+                <li class="page_item {{activeMenu('cart')}}">
+                    <!-- <span class="cart">0</span> -->
+                    <a   href="/pages/cart">{{'Cart' | translate}}</a>
+                    <!-- <ul>
+                         <li><a href="product-detail.html">Product Detail</a></li>                         
+                         <li><a href="cart.html">Cart</a></li>
+                        <li><a href="checkout.html">Checkout</a></li>
+                    </ul> -->
+                </li>
+
+                <li class="page_item {{activeMenu('Join Us')}}">
+                    <a href="javascript:(0)">{{'Join Us' | translate}}</a>
+                    <ul>
+                        <li><a href="/pages/about-us">{{'About Us' | translate}}</a></li>
+                        <li><a href="/pages/contact-us">{{'Contact Us' | translate}}</a></li>
+                        <li><a href="/register-partner">{{'For Business Partner Registration' | translate}}</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <!-- <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
+                        <option value="" selected disabled>Language</option>
+                        <option value="en">EN</option>
+                        <option value="th">TH</option>
+                      </select> -->
+                      <select #langSelect (change)="translate.use(langSelect.value)" class="form-control" >
+                        <option value="" disabled>Language</option>
+                        <option *ngFor="let lang of translate.getLangs()" 
+                        [value]="lang" [attr.selected]="lang === translate.currentLang ? '' : null">{{lang | translate}}</option>
+                      </select>
+                    <!-- <a href="">Language</a> -->
+                </li>
+
+            </ul>
+        </nav>
+
+        <div id="responsive-menu-container"></div>
+

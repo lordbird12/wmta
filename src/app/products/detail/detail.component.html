@@ -1,0 +1,124 @@
+<div class="gallery-single-wrapper clearfix">
+    <article class="clearfix">
+        <div class="container">
+
+            <div class="row" *ngIf="productData !=''">
+                <div class="col-lg-7">
+                    <!-- <span class="onsale">Sale!</span> -->
+                    <div class="gallery-single-post clearfix">
+                        <div class="clearfix" id="slider">
+                            <!--slider-->
+                            <ul class="slides">
+                                <li><a href="{{ productData.main_picture }}" title=""><img
+                                            src="{{ productData.main_picture }}" class="img-products"
+                                            alt="{{ productData.title }}"></a></li>
+                                <li *ngFor='let p of pathImg'><a href="{{ p.image }}" title="{{ p.title }}"><img
+                                            src="{{ p.image }}" class="img-products"
+                                            alt="{{ p.title }}"></a>
+                            </ul>
+                        </div>
+                        <br />
+                        <div id="carousel" class="flexslider">
+                            <!--thumbnail carousel for slider-->
+                            <ul class="slides">
+                                <li><img src="{{ productData.main_picture }}" class="img-slides"
+                                        alt="{{ productData.title }}"></li>
+                                <li *ngFor='let p of pathImg'><img src="{{ p.image }}" class="img-slides"
+                                        alt="{{ p.title }}"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="col-lg-12 cardOriginal clearfix">
+                        <!--gallery item title-->
+                        <div class="row col-lg-12 mx-auto">
+                            <h1 class="entry-title mx-auto">{{ productData.title }}</h1>
+                        </div>
+                        
+                        <!-- <div class="gallery-item-types">
+                            <i class="fa fa-tags"></i>
+                            <a href="#">Advanced Technology</a>, <a href="#">Free Facilities</a>
+                        </div> -->
+                        <div class="row col-lg-12 mx-auto">
+                            <div class="entry-content">
+                                <p>{{ productData.shot_detail }}</p>
+                            </div>
+                        </div>
+
+                        <div class="row col-lg-12 mx-auto">
+                            <div class="col-lg-10">
+                                <div class="cost-number">{{ this.helper.money_format(productData.price) }} THB</div>
+                            </div>
+                        </div>
+
+                        <div class="row col-lg-12 mx-auto">
+                            <div class="col-lg-3">
+                                <input type="number" name="qty" value="1" title="Qty" class="form-control" />
+                            </div>
+                            <div class="col-lg-9">
+                                <button type="button" class="btn btn-buy mx-2">Buy Now</button>
+                                <button type="button" class="btn btn-success mx-2">Add to cart</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <br />
+            <div class="cardOriginal">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mx-auto">
+                            <div class="col-lg-12">
+                                <h4 style="color: #288a72;">Description</h4>
+                                <hr />
+                                <p>{{ productData.title }}</p>
+                                <p>{{ productData.detail }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardOriginal">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mx-auto">
+                            <section class="single-feature text-center col-sm-4">
+                                <!-- <img src="assets/images/temp-images/1st-big-feature.png" alt="Special Care Unit"> -->
+                                <a href="tel:+66945149294">
+                                    <div class="feature-border">
+                                        <i class="fa fa-phone" style="font-size: 40px;"></i>
+                                    </div>
+                                    <h5>Call to make an appointment</h5>
+                                </a>
+                            </section>
+                            <section class="single-feature text-center col-sm-4">
+                                <a href="/concierge-service/enquiry-form">
+                                    <div class="feature-border">
+                                        <i class="fa fa-comments" style="font-size: 40px;"></i>
+                                    </div>
+                                    <h5>Ask for information</h5>
+                                </a>
+                            </section>
+                            <section class="single-feature text-center col-sm-4">
+                                <a href="/pages/contact-us">
+                                    <div class="feature-border">
+                                        <i class="fa fa-calendar" style="font-size: 40px;"></i>
+                                    </div>
+                                    <h5>Make an appointment</h5>
+                                </a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </article>
+
+</div>

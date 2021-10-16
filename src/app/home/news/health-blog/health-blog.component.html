@@ -1,0 +1,104 @@
+
+<div class="blog-page clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-8">
+                <div class="blog-post-single clearfix">
+
+                    <div class="row" *ngIf="arrData !=''">
+                        <div class="col-lg-2">
+                            <div class="left_meta clearfix entry-meta">
+                                <time class="entry-time" >{{ this.helper.monthText(arrData.created_at | date : 'M','en') }}
+                                    <strong>{{ arrData.created_at | date : 'dd' }}</strong></time>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-10">
+                            <article class="post format-gallery hentry clearfix">
+                                <div class="right-contents">
+                                    <header class="entry-header">
+
+                                        <figure>
+                                            <a class="swipebox" href="javascript:(0)"
+                                                title="{{ arrData.title }}">
+                                                <img src="{{ arrData.image }}"
+                                                    class="attachment-blog-page wp-post-image" alt="news-{{ arrData.id }}" />
+                                            </a>
+                                        </figure>
+                                        
+                                        <h1 class="entry-title">{{ arrData.title }}</h1>
+                                        <span class="entry-author">
+                                            Date posted : <span class="entry-author-link">{{ arrData.created_at | date : 'yyyy-MM-dd'}}</span>
+                                        </span>
+                                    </header>
+
+                                    <div class="entry-content">
+                                        <p>{{ arrData.detail }}</p>
+                                    </div>
+
+                                    <!-- <footer class="entry-footer">
+                                        <p class="entry-meta">
+                                            <span class="entry-categories">
+                                                <i class="fa fa-folder-o"></i>&nbsp; <a href="#"
+                                                    title="View all posts in Environment"
+                                                    rel="category tag">Environment</a>
+                                            </span>
+                                            <span class="entry-tags">
+                                                <i class="fa fa-tags"></i>&nbsp; <a href="#" rel="tag">blood
+                                                    pressure</a>,
+                                                <a href="#" rel="tag">clean environment</a>, <a href="#"
+                                                    rel="tag">friendly staff</a>,
+                                                <a href="#" rel="tag">kids health</a>
+                                            </span>
+                                        </p>
+                                    </footer> -->
+                                </div>
+                            </article>
+
+                            
+                            <div class="cardOriginal">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mx-auto">
+                                            <section class="single-feature text-center col-sm-4">
+                                                <!-- <img src="assets/images/temp-images/1st-big-feature.png" alt="Special Care Unit"> -->
+                                                <a href="tel:+66945149294">
+                                                    <div class="feature-border">
+                                                        <i class="fa fa-phone" style="font-size: 40px;"></i>
+                                                    </div>
+                                                    <h5>Call to make an appointment</h5>
+                                                </a>
+                                            </section>
+                                            <section class="single-feature text-center col-sm-4">
+                                                <a href="/concierge-service/enquiry-form">
+                                                    <div class="feature-border">
+                                                        <i class="fa fa-comments" style="font-size: 40px;"></i>
+                                                    </div>
+                                                    <h5>Ask for information</h5>
+                                                </a>
+                                            </section>
+                                            <section class="single-feature text-center col-sm-4">
+                                                <a href="/pages/contact-us">
+                                                    <div class="feature-border">
+                                                        <i class="fa fa-calendar" style="font-size: 40px;"></i>
+                                                    </div>
+                                                    <h5>Make an appointment</h5>
+                                                </a>
+                                            </section>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

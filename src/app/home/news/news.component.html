@@ -1,0 +1,33 @@
+<!-- Health Blog -->
+<div class="services-page clearfix">
+    <div class="container text-center">
+        <h2>Health News</h2>
+        <hr />
+    </div>
+
+    <div class="container">
+        <div class="row ">
+           
+            <div class="col-md-4 col-sm-6" *ngFor="let item of arrData">
+                <article class="service type-service hentry three-col-service">
+                    <figure>
+                        <a href="/health-blog/{{ item.id }}" title="{{ item.id }}">
+                            <img src="{{ item.image }}" alt="{{ item.title }}" />
+                        </a>
+                    </figure>
+                    <div class="contents clearfix">
+                        <h4><a href="/health-blog/{{ item.id }}">{{ item.title }}</a></h4>
+                        <div class="entry-content">
+                            <p>{{ item.shot_detail }}&hellip;</p>
+                        </div>
+                        <a class="read-more" href="/health-blog/{{ item.id }}">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- Health Blog -->

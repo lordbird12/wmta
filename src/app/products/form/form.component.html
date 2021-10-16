@@ -1,0 +1,116 @@
+<br />
+<div class="container">
+    <h4><a href="/products/list" title="back To Products">Products</a> / Post a Product</h4>
+    <hr />
+</div>
+
+<div class="container">
+    <div class="row col-lg-12">
+
+        <div class="cardOriginal col-lg-12">
+            <div class="row mx-auto">
+             <div class="col-lg-12">
+                <label for="title">
+                    <p>Main Picture</p>
+                </label>
+                <div class="col-lg-12">
+                    <img [src]="mainPicture || 'assets/images/temp-images/gallery-31-670x500.jpg'" (click)="uploadBtn()"
+                        class="img-thumbnail" style="cursor: pointer; width: 300px; height: 250px;" alt="avatar">
+                </div>
+                <div class="p-image">
+                    <i class="fa fa-camera upload-button" (click)="uploadBtn()"></i>
+                    <input type="file" formControlName="main_picture" (change)="readFileImg($event)" class="file-upload action-btn" accept="image/*" >          
+                </div>
+                </div>
+            </div>
+
+            <div class="row mx-auto mt-4">
+                <div class="col-lg-12">
+                    <label for="emailtxt">
+                        <p>More product pictures</p>
+                    </label>
+
+                    <!-- <div  *ngFor="let progressInfo of progressInfos" class="mb-2 row col-lg-12">
+                    <span>{{ progressInfo.rows }}) {{ progressInfo.fileName }}</span> -->
+                        <!-- <div class="progress">
+                            <div class="progress-bar  progress-bar-striped " role="progressbar"
+                            attr.aria-valuenow="{{ progressInfo.value }}"
+                            aria-valuemin="0"
+                            aria-valuemax="100"
+                            [ngStyle]="{ width: progressInfo.value + '%' }"> {{ progressInfo.value }}% </div>
+                        </div> -->
+                    <!-- </div> -->
+
+                     <ul class="row thumb-Images">
+                        <li *ngFor='let imgurl of imageurls; let i = index'>
+                            <img class="thumb" [src]="imgurl.base64String" style="height: 150px; width: 200px; border: 1px solid #000;">
+                        </li>
+                     </ul>
+                        
+                    <div class="row col-lg-6"> 
+                        <!--  jpg, png, gif -->
+                        <div class="col-lg-8"> 
+                            <input type="file" class="btn btn-info file-select" accept="image/*"  (change)="onSelectFile($event)"
+                            formControlName="images[]"  multiple />
+                        </div>
+                        <div class="col-lg-4">
+                            <button class="btn btn-warning mx-2" type="button" style="color: #fff;"  (click)="clearFile()">
+                                <i class="glyphicon glyphicon-repeat"></i>&nbsp;Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mx-auto mt-4">
+                <div class="col-lg-6">
+                    <label for="title">
+                        <p>Product Name</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="title" />
+                </div>
+        
+                <div class="col-lg-6">
+                    <label for="shot_detail">
+                        <p>Shot Detail</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="shot_detail" />
+                </div>
+            </div>
+
+            <div class="row mx-auto">
+                <div class="col-lg-12">
+                    <label for="detail">
+                        <p>Detail</p>
+                    </label>
+                    <textarea type="text" class="form-control" formControlName="detail" rows="3"></textarea>
+                </div>
+            </div>
+
+            <div class="row mx-auto">
+                <div class="col-lg-6">
+                    <label for="Price">
+                        <p>Price</p>
+                    </label>
+                    <input type="number" class="form-control" formControlName="price" />
+                </div>
+        
+                <div class="col-lg-6">
+                    <label for="discount">
+                        <p>Discount</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="discount" />
+                </div>
+            </div>
+
+            <div class="row mx-auto text-center">
+                <div class="col-lg-12" style="margin-top: 2.5rem!important;">
+                    <button class="btn btn-lg btn-success mx-2" type="button">
+                        <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Save</button>
+                    <button class="btn btn-lg" type="button" style="color: #7b7d85;"><i class="glyphicon glyphicon-repeat"></i>&nbsp;Close</button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>

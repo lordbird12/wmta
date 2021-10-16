@@ -1,0 +1,268 @@
+<div class="container text-center">
+    <h3>Profile</h3>
+    <hr />
+</div>
+
+<div class="container">
+    <div class="row ">
+        <div class="col-md-3">
+            <div class="profile-heading">
+                <img [src]="imageSrc || 'assets/images/user_icon.png'" (click)="uploadBtn()"
+                    class="img-thumbnail img-circle img-profile" style="cursor: pointer;" alt="avatar">
+
+                <div class="uppro-image">
+                    <i class="fa fa-camera upload-button" (click)="uploadBtn()"></i>
+                    <input type="file" (change)="readFileImg($event)" formControlName="fileimg" id="fileimg"
+                        class="file-upload action-btn" accept="image/*">
+                </div>
+            </div>
+            <br>
+
+            <div class="panel panel-wmta">
+                <div class="panel-heading"><strong>Your Mail</strong></div>
+                <div class="panel-body"><strong>{{userData.data.email}}</strong></div>
+            </div>
+
+            <div class="panel panel-wmta">
+                <div class="panel-heading"><strong>User Type</strong></div>
+                <div class="panel-body" *ngIf="userData.data.type =='0'"><strong>General User</strong></div>
+                <div class="panel-body" *ngIf="userData.data.type =='1'"><strong>Hotel</strong></div>
+                <div class="panel-body" *ngIf="userData.data.type =='2'"><strong>Hospital</strong></div>
+                <div class="panel-body" *ngIf="userData.data.type =='3'"><strong>Doctor</strong></div>
+            </div>
+
+            <div class="list-group" id="list-tab" role="tablist">
+                <a href="javascript:(0)"
+                    class="list-group-item list-group-item-action {{activeMenu('User Management')}}"
+                    id="user-management" (click)="changeMenu('User Management')"><strong>User Management</strong></a>
+                <a href="javascript:(0)"
+                    class="list-group-item list-group-item-action {{activeMenu('Package History')}}" id="list-packet"
+                    (click)="changeMenu('Package History')"><strong>Package History</strong></a>
+                <a href="/products/form"
+                    class="list-group-item list-group-item-action" id="list-post-product"><strong>Post a Product</strong></a> 
+                <a href="javascript:(0)" class="list-group-item list-group-item-action {{activeMenu('Re-Password')}}"
+                    id="re-password" (click)="changeMenu('Re-Password')"><strong>Re-Password</strong></a>
+                <a href="javascript:(0)" class="list-group-item list-group-item-action {{activeMenu('Logout')}}"
+                    id="logout" (click)="signOut()"
+                    style="background-color: #3a3c41; color:#fff;"><strong>Logout</strong></a>
+            </div>
+        </div>
+
+        <div class="col-md-9 cardOriginal">
+
+            <div class="row mx-auto">
+                <!-- User Management -->
+                <div class="col-lg-12" *ngIf="ActionShow =='User Management'">
+                    <form [formGroup]="profileData">
+                        <h5>User Management</h5>
+                        <hr />
+                        <div class="row mx-auto">
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="first_name">
+                                        <p>First name</p>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="fname"
+                                        [class.is-invalid]="profileData.get('fname')?.invalid && (profileData.get('fname')?.dirty || profileData.get('fname')?.touched)"
+                                        placeholder="first name" title="enter your first name if any." />
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label for="last_name">
+                                        <p>Last name</p>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="lname" 
+                                        [class.is-invalid]="profileData.get('lname')?.invalid && (profileData.get('lname')?.dirty || profileData.get('lname')?.touched)"
+                                        placeholder="last name" title="enter your last name if any." />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto">
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="phone">
+                                        <p>Phone</p>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="phone" 
+                                        [class.is-invalid]="profileData.get('phone')?.invalid && (profileData.get('phone')?.dirty || profileData.get('phone')?.touched)"
+                                        placeholder="enter phone" title="enter your phone number if any." maxlength="20"  minlength="9" />
+                                        <div *ngIf="profileData.get('phone')?.errors?.minlength">
+                                            <small class="text-danger">Password must be 9 characters long</small>
+                                        </div>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <label for="email">
+                                        <p>Email</p>
+                                    </label>
+                                    <input type="email" class="form-control" formControlName="email"
+                                        placeholder="you@email.com" title="enter your email." [class.is-invalid]="email.invalid && (email.dirty || email.touched)" />
+                                        <div *ngIf="(email.valid && email.touched) || email.dirty">
+                                            <div *ngIf="email.errors?.email">
+                                                <small class="text-danger">The email address has an error.</small>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto">
+                            <div class="col-lg-6">
+                                <label for="birthday">
+                                    <p>Birthday</p>
+                                </label>
+                                <input type="date" class="form-control" formControlName="birthday" />
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label for="Age">
+                                    <p>Age</p>
+                                </label>
+                                <input type="text" class="form-control" formControlName="age" />
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto">
+                            <div class="col-lg-6">
+                                <label for="Sex">
+                                    <p>Sex</p>
+                                </label>
+                                <select formControlName="sex" class="form-control" aria-required="true"
+                                    data-live-search="true">
+                                    <option value="">--- Choose ---</option>
+                                    <option value="M">Man</option>
+                                    <option value="W">Woman</option>
+                                </select>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label for="Line">
+                                    <p>Line (Ex.@linename)</p>
+                                </label>
+                                <input type="text" class="form-control" formControlName="line" />
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto">
+                            <div class="col-lg-6">
+                                <label for="position">
+                                    <p>Position</p>
+                                </label>
+                                <input type="text" class="form-control" formControlName="position" />
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label for="department">
+                                    <p>Department</p>
+                                </label>
+                                <input type="text" class="form-control" formControlName="department" />
+                            </div>
+                        </div>
+
+                        <div class="row mx-auto">
+                            <div class="form-group">
+                                <div class="col-lg-6">
+                                    <label for="organization">
+                                        <p>Organization</p>
+                                    </label>
+                                    <input type="text" class="form-control" formControlName="organization" />
+                                </div>
+
+                                <div class="col-lg-6" style="margin-top: 2.5rem!important;">
+                                    <button class="btn btn-lg btn-success mx-2" type="button"
+                                        (click)="onSave(profileData)">
+                                        <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Save</button>
+                                    <button class="btn btn-lg" type="reset" style="color: #7b7d85;">
+                                        <i class="glyphicon glyphicon-repeat"></i>&nbsp;Reset</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Package History -->
+                <div class="col-lg-12" *ngIf="ActionShow =='Package History'">
+                    <h5>Package History</h5>
+                    <hr />
+                    <div class="row col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped" style="width: 100%;">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">List</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let dp of dataPacket">
+                                        <th scope="row">{{dp.id}}</th>
+                                        <td>{{dp.pacName}}</td>
+                                        <td>{{dp.status}}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-sm mx-2"
+                                                (click)="onDetail(dp)">Detail</button>
+                                            <button type="button" class="btn btn-warning btn-sm">Review</button>
+                                            <!-- <div class="star-rating-container star-rating-animation" fxLayout="row" fxLayoutAlign="start center" >
+                                        <div *ngFor="let star of stars" [ngClass]="[star.class]" (click)="selectStar(star.id)">
+                                            <i class="fa fa-{{star.icon}}" style="width: 25px; height: 25px"></i>
+                                        </div>
+                                    </div> -->
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Re-Password -->
+                <div class="col-lg-12" *ngIf="ActionShow =='Re-Password'">
+                    <h5>Re-Password</h5>
+                    <hr />
+                    <div class="row mx-auto">
+                        <div class="col-lg-6">
+                            <label for="password">
+                                <p>Old Password</p>
+                            </label>
+                            <input type="password" class="form-control" name="old-password" id="old-password"
+                                placeholder="Old Password" title="Enter your old password.">
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label for="Confirm Password">
+                                <p>New Password</p>
+                            </label>
+                            <input type="password" class="form-control" name="new-password" id="new-password"
+                                placeholder="New Password" title="Enter your new password">
+                        </div>
+                    </div>
+
+                    <!-- <div class="row mx-auto">
+                        <div class="col-lg-12">
+                        <label class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" />
+                          <span class="custom-control-label">Agree the <a href="terms.html">terms and policy</a></span>
+                        </label>
+                         </div>
+                      </div> -->
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <br>
+                            <button class="btn btn-lg btn-success mx-2" type="submit"><i
+                                    class="glyphicon glyphicon-ok-sign"></i>&nbsp;Confirm Password</button>
+                            <button class="btn btn-lg" type="reset" style="color: #7b7d85;"><i
+                                    class="glyphicon glyphicon-repeat"></i>&nbsp;Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end col-md-9 -->
+
+    </div>
+</div>

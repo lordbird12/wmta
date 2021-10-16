@@ -1,0 +1,185 @@
+<!-- Wellness hotel & resort -->
+<form [formGroup]="register.registerHotel">
+    <div class="col-lg-12 cardOriginal">
+        <div class="row mx-auto">
+            <div class="col-lg-12 text-center">
+                <h3>Sign Up</h3>
+                <p>Register an account for hotel & resort</p>
+            </div>
+        </div>
+
+        <div class="row mx-auto mt-4">
+            <div class="text-center col-lg-12">
+                <img [src]="imageSrcHotel || 'assets/images/user_icon.png'" (click)="uploadBtnHotel()"
+                    class="img-thumbnail img-circle img-profile" style="cursor: pointer;" alt="avatar">
+            </div>
+            <div class="p-image">
+                <i class="fa fa-camera upload-button" (click)="uploadBtnHotel()"></i>
+                <input type="file" (change)="readFileImgHotel($event)" formControlName="imageHotel" class="file-upload2 action-btn"
+                    accept="image/*">
+
+            </div>
+        </div>
+
+        <div class="row mx-auto mt-4">
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <label for="first_name">
+                        <p>First name</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="fnameHotel" placeholder="first name"
+                        title="enter your first name if any."
+                        [class.is-invalid]="register.fnameHotel.invalid && (register.fnameHotel.dirty || register.fnameHotel.touched)">
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="last_name">
+                        <p>Last name</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="lnameHotel" placeholder="last name"
+                        title="enter your last name if any."
+                        [class.is-invalid]="register.lnameHotel.invalid && (register.lnameHotel.dirty || register.lnameHotel.touched)">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <label for="birthday">
+                    <p>Birthday</p>
+                </label>
+                <input type="date" class="form-control" formControlName="birthdayHotel" />
+            </div>
+
+            <div class="col-lg-6">
+                <label for="City">
+                    <p>Age</p>
+                </label>
+                <input type="number" class="form-control" formControlName="ageHotel" />
+            </div>
+        </div>
+
+        <div class="row mx-auto">
+            <div class="form-group">
+                <div class="col-lg-6">
+                    <label for="phone">
+                        <p>Phone</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="phoneHotel" minlength="9" maxlength="20"
+                        placeholder="enter phone" title="enter your phone number if any."
+                        [class.is-invalid]="register.phoneHotel.invalid && (register.phoneHotel.dirty || register.phoneHotel.touched)">
+                </div>
+
+                <div class="col-lg-6">
+                    <label for="City">
+                        <p>Line (Ex.@linename)</p>
+                    </label>
+                    <input type="text" class="form-control" formControlName="lineHotel" />
+                </div>
+            </div>
+        </div>
+
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <label for="position">
+                    <p>Position</p>
+                </label>
+                <input type="text" class="form-control" formControlName="positionHotel" />
+            </div>
+
+            <div class="col-lg-6">
+                <label for="department">
+                    <p>Department</p>
+                </label>
+                <input type="text" class="form-control" formControlName="departmentHotel" />
+            </div>
+        </div>
+
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <label for="organization">
+                    <p>Organization</p>
+                </label>
+                <input type="text" class="form-control" formControlName="organizationHotel" />
+            </div>
+
+            <div class="col-lg-6">
+                <label for="City">
+                    <p>Sex</p>
+                </label>
+                <select formControlName="sexHotel" class="form-control" aria-required="true" data-live-search="true">
+                    <option value="">--- Choose ---</option>
+                    <option value="M">Man</option>
+                    <option value="W">Woman</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <label for="emailtxt">
+                    <p>Email</p>
+                </label>
+                <div>
+                    <input type="email" placeholder="example@gmail.com" formControlName="emailHotel" class="form-control"
+                        [class.is-invalid]="register.emailHotel.invalid && (register.emailHotel.dirty || register.emailHotel.touched)" />
+                    <div *ngIf="(register.emailHotel.valid && register.emailHotel.touched) || register.emailHotel.dirty">
+                        <div *ngIf="register.emailHotel.errors?.email">
+                            <small class="text-danger">The email address has an error.</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <label for="Password">
+                    <p>Password</p>
+                </label>
+                <input type="password" class="form-control" formControlName="passwordHotel" minlength="6"
+                    [class.is-invalid]="register.passwordHotel.invalid && (register.passwordHotel.dirty || register.passwordHotel.touched)" />
+                <div *ngIf="(register.passwordHotel.valid && register.passwordHotel.touched) || register.passwordHotel.dirty">
+                    <div *ngIf="register.passwordHotel.errors?.minlength">
+                        <small class="text-danger">Password must be 6 characters long</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mx-auto">
+            <div class="col-lg-6">
+                <label for="emailtxt">
+                    <p>Attach files such as : Passport, Medical diagnosis, etc. (images) </p>
+                </label>
+
+                <div *ngFor="let progressInfo of progressInfos" class="mb-2 row col-lg-12">
+                    <span>{{ progressInfo.rows }}) {{ progressInfo.fileName }}</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <input type="file" class="btn btn-info file-select" accept="image/*" formControlName="filesHotel[]"
+                            (change)="fileArrListHotel($event)" multiple />
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="btn btn-warning mx-2" type="button" style="color: #fff;" (click)="clearFileHotel()">
+                            <i class="glyphicon glyphicon-repeat"></i>&nbsp;Clear</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mx-auto text-center">
+            <div class="col-lg-12" style="margin-top: 2.5rem!important;">
+                <button class="btn btn-lg btn-success mx-2" type="button" (click)="registerAccount(register.registerHotel)">
+                    <i class="glyphicon glyphicon-ok-sign"></i>&nbsp;Confirm</button>
+                <button class="btn btn-lg" type="button" style="color: #7b7d85;"><i
+                        class="glyphicon glyphicon-repeat"></i>&nbsp;Reset</button>
+            </div>
+        </div>
+
+    </div>
+</form>
+<!-- Wellness hotel & resort -->

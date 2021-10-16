@@ -1,0 +1,61 @@
+
+
+.file-upload {
+    display: none;
+}
+
+.p-image {
+  position: absolute;
+  top: 250px !important;
+  right: 43% !important;
+  color: #666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+
+.upload-button {
+    font-size: 1.5em;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50px !important;
+  }
+  
+  .upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #288a72;
+    cursor: pointer;
+  }
+
+.main-register {
+	margin-top:50px;
+	margin-bottom:50px;
+ }
+ 
+ @media (max-width: 767px)  {
+	.main-register {
+		margin-top:20px;
+		margin-bottom:10px;
+	 }
+
+  .p-image {
+    position: absolute;
+    top: 225px !important;
+    right: 37% !important;
+    color: #666;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    cursor: pointer;
+  }
+
+  .p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  }
+}
+
+.justify-content-end {
+    -webkit-box-pack: end!important;
+    -ms-flex-pack: end!important;
+    justify-content: flex-end!important;
+}

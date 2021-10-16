@@ -1,0 +1,10 @@
+a.remove{
+    display:block;font-size:2em;height:1em;width:1em;
+    text-align:center;line-height:1;border-radius:100%;color:red!important;
+    text-decoration:none;font-weight:700;border:0
+}
+.woocommerce 
+a.remove:hover{
+    color:#fff!important;background:red
+}
+
