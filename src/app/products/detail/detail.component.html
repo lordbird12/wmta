@@ -10,7 +10,7 @@
                             <!--slider-->
                             <ul class="slides">
                                 <li>
-                                    <a href="{{ productData.main_picture }}" title=""><img src="{{ productData.main_picture }}" class="img-products" alt="{{ productData.title }}"></a>
+                                    <a href="{{ productData.main_picture }}" title=""><img src="{{ productData.main_picture }}" style="width:100%; height:auto !important;" class="img-products" alt="{{ productData.title }}"></a>
                                 </li>
                                 <li *ngFor='let p of pathImg'>
                                     <a href="{{ p.image }}" title="{{ p.title }}"><img src="{{ p.image }}" class="img-products" alt="{{ p.title }}"></a>

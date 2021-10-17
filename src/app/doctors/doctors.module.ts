@@ -5,10 +5,12 @@ import { DoctorsRoutingModule } from './doctors-routing.module';
 import { ListComponent } from './list/list.component';
 import { I18nModule } from '../i18n/i18n.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
-    ListComponent
+    ListComponent,
+    DetailComponent
   ],
   imports: [
     CommonModule,

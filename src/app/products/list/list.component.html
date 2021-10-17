@@ -8,15 +8,14 @@
     <div class="container isotope-wrapper">
         <div class="row">
 
-            <div class="col-md-4 col-sm-6" *ngFor="let item of productData">
+            <div class="col-md-6 col-sm-6" *ngFor="let item of productData">
                 <article class="service type-service hentry three-col-service">
                     <figure>
                         <a href="/products/detail/{{ item.id }}" title="{{ item.id }}">
-                            <img src="{{ item.main_picture }}" alt="{{ item.title }}"
-                                style="width: 100%; height: 250px; object-fit: cover;" />
+                            <img src="{{ item.main_picture }}" alt="{{ item.title }}" style="width: 100%; height: 550px; object-fit: cover;" />
                         </a>
                     </figure>
-                    <div class="contents clearfix">
+                    <div class="contents clearfix" style="height: 200px !important;">
                         <h4><a href="/products/detail/{{ item.id }}">{{ item.title }}</a></h4>
                         <div class="entry-content">
                             <p>{{ item.shot_detail }}&hellip;</p>
