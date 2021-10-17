@@ -25,12 +25,12 @@ export class ServiceService {
 
   new(register: FormData): Observable<Register> {
     return this.http
-      .post<Register>('https://api.logo-design360.com/wmta-api/public/api/register', register, httpOptions)
+      .post<Register>('https://api.logo-design360.com/wmta-api/public/api/register', register)
       .pipe(catchError((err) => this.handlerError(err)));
   }
 
   addAccount(register: FormData): Observable<dataResponse> {
-    return this.http.post<dataResponse>('https://api.logo-design360.com/wmta-api/public/api/register', register, httpOptions)
+    return this.http.post<dataResponse>('https://api.logo-design360.com/wmta-api/public/api/register', register)
     .pipe( 
       map((register: dataResponse) => {
       return register;
